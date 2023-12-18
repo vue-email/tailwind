@@ -1,9 +1,10 @@
 import type { CorePluginsConfig } from 'tailwindcss/types/config'
 import postcss from 'postcss'
 import postcssCssVariables from 'postcss-css-variables'
+import type { TailwindConfig } from '../..'
 import { createTailwindcssPlugin } from './create-tailwind-css-plugint'
 
-export async function getCssForMarkup(markup: string, config: any) {
+export async function getCssForMarkup(markup: string, config: TailwindConfig | undefined) {
   const corePlugins = config?.corePlugins as CorePluginsConfig
 
   const tailwindConfig = {
