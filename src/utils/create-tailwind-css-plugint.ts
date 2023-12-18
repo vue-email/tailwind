@@ -1,7 +1,7 @@
 import processTailwindFeatures from 'tailwindcss/src/processTailwindFeatures.js'
 import resolveConfig from 'tailwindcss/src/public/resolve-config.js'
 import type { AcceptedPlugin } from 'postcss'
-import type { TailwindConfig } from 'tailwindcss/tailwindconfig.faketype'
+import type { TailwindConfig } from '../..'
 
 export function createTailwindcssPlugin(props: {
   config?: TailwindConfig

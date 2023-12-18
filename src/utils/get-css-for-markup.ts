@@ -15,7 +15,7 @@ export async function getCssForMarkup(markup: string, config: TailwindConfig | u
     },
   }
 
-  const tailwindcssPlugin = createTailwindcssPlugin({ config: tailwindConfig, content: [{ raw: markup, extension: 'html' }] })
+  const tailwindcssPlugin = createTailwindcssPlugin({ config: tailwindConfig, content: markup })
 
   const processor = postcss([
     tailwindcssPlugin,
