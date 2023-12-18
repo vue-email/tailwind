@@ -1,10 +1,9 @@
-import processTailwindFeatures from 'tailwindcss/src/processTailwindFeatures.js'
 import type { CorePluginsConfig } from 'tailwindcss/types/config'
 import postcss from 'postcss'
 import postcssCssVariables from 'postcss-css-variables'
-import type { TailwindConfig } from '../index'
+import { createTailwindcssPlugin } from './create-tailwind-css-plugint'
 
-export async function getCssForMarkup(markup: string, config: TailwindConfig | undefined) {
+export async function getCssForMarkup(markup: string, config: any) {
   const corePlugins = config?.corePlugins as CorePluginsConfig
 
   const tailwindConfig = {
@@ -15,16 +14,10 @@ export async function getCssForMarkup(markup: string, config: TailwindConfig | u
     },
   }
 
-  const tailwindcssPlugin = processTailwindFeatures(
-    (processOptions: any) => () =>
-      processOptions.createContext({
-        ...tailwindConfig,
-        content: [{ raw: markup, extension: 'html' }],
-      }),
-  )
+  const tailwindcssPlugin = createTailwindcssPlugin({ config: tailwindConfig, content: [{ raw: markup, extension: 'html' }] })
 
   const processor = postcss([
-    tailwindcssPlugin(),
+    tailwindcssPlugin,
     postcssCssVariables(),
   ])
   const result = await processor.process(
