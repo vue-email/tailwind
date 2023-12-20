@@ -1,6 +1,6 @@
 import resolveConfig from 'tailwindcss/src/public/resolve-config.js'
 
-export function resolveTwConfig(path: string) {
+export function resolveTwConfig(path: any) {
   let _tailwindConfig: any | undefined
   try {
     _tailwindConfig = resolveConfig(path)
