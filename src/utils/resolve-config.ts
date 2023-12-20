@@ -1,12 +1,12 @@
 import resolveConfig from 'tailwindcss/src/public/resolve-config.js'
 
-export function resolveTwConfig(path: any) {
+export function resolveTwConfig(config: any) {
   let _tailwindConfig: any | undefined
   try {
-    _tailwindConfig = resolveConfig(path)
+    _tailwindConfig = resolveConfig(config)
   }
   catch (error) {
-    throw new Error(`Failed to load Tailwind config at ${path}`)
+    throw new Error(`Failed to load Tailwind config at ${config}`)
   }
 
   if (_tailwindConfig && !_tailwindConfig.content)
