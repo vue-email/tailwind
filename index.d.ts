@@ -8,3 +8,4 @@ export function getCssForMarkup(markup: string, config: TailwindConfig | undefin
 export function getStylesPerClassMap(css: string): Record<string, string>
 export function minifyCss(css: string): string
 export function useRgbNonSpacedSyntax(css: string): string
+export function loadTailwindConfig(path: string): TailwindConfig
